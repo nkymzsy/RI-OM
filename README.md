@@ -6,6 +6,7 @@ This repository contains code for RI-OM: Using Robust Normal Distributions Trans
 
 - [ROS](http://wiki.ros.org/ROS/Installation) 
 - [gtsam](https://bitbucket.org/gtborg/gtsam) 
+- [Ceres Solver](http://ceres-solver.org/installation.html)
 
 ## Compile
 
