@@ -1,0 +1,12 @@
+<launch>
+
+    <param name="/use_sim_time" value="true" />
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ri_om)/launch/setting.rviz" />
+
+    <!---main -->    
+    <node pkg="ri_om" type="fast_odom"    name="fast_odom"    output="screen"/>
+    <node pkg="ri_om" type="mapping" name="mapping" output="screen"/>
+    <node pkg="ri_om" type="transformfusion" name="transformfusion" output="screen"/>
+
+</launch>
