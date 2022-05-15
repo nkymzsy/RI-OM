@@ -35,6 +35,8 @@ rosbag play *.bag --clock
 ## Demo  bag
 [demo.bag](https://drive.google.com/file/d/1El3t0DGrSXxGXByLzpi03-YFfFjQAfJS/view?usp=sharing)
 
+![demo.gif](doc/demo.gif)
+
 # Acknowledgements
 Thanks for [A-LOAM](https://github.com/HKUST-Aerial-Robotics/A-LOAM), [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM),[Scan Context](https://github.com/irapkaist/scancontext).
 

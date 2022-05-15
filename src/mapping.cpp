@@ -1,6 +1,9 @@
 #include "utility.hpp"
 
-const float size_voxel = 1;
+float size_voxel;
+bool loop_det;
+bool SC_loop_det;
+
 zsy_ndt_lib::closeloop_detection close_det_opt; 
 
 Eigen::Matrix4d T = Eigen::Matrix4d::Zero();
@@ -393,8 +396,14 @@ void loop_detection()
     while (ros::ok())
     {
         rate.sleep();
-        //close_det_opt.do_detection();    //location-based closed-loop detection
-        close_det_opt.do_detection_sc(); //using scan-context
+        if(loop_det)
+        {
+            if(SC_loop_det)
+                close_det_opt.do_detection_sc(); //using scan-context
+            else
+                close_det_opt.do_detection();    //location-based closed-loop detection 
+        }
+
     }
 }
 
@@ -424,6 +433,10 @@ int main(int argc, char **argv)
 
     ros_msg.pub_cur_scan = n.advertise<sensor_msgs::PointCloud2>("curr_scan", 1);
     ros_msg.pub_global_map = n.advertise<sensor_msgs::PointCloud2>("global_map", 1);
+
+    n.param<float>("size_voxel", size_voxel, 1);
+    n.param<bool>("loop_det", loop_det, true);
+    n.param<bool>("SC_loop_det", SC_loop_det, true);
 
     std::thread visualizeMapThread(&visualize_globemap_Thread);
     std::thread loop_thread(&loop_detection);
